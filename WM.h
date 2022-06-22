@@ -23,7 +23,7 @@ extern "C" {
   #include "user_interface.h"
 }
 
-const char HTTP_HEAD[] PROGMEM            = "<!DOCTYPE html><html lang=\"en\"><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\"/><title>{v}</title>";
+const char HTTP_HEAD_[] PROGMEM            = "<!DOCTYPE html><html lang=\"en\"><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\"/><title>{v}</title>";
 const char HTTP_HEAD_END[] PROGMEM        = "</head><body><div style='text-align:left;display:inline-block;min-width:260px;'>";
 const char HTTP_PORTAL_OPTIONS[] PROGMEM  = "<form action=\"/wifi\" method=\"get\"><button>MatrixDisplay konfigurieren</button></form><br/><br/><form action=\"/i\" method=\"get\"><button>Chip-Info</button></form><br/><form action=\"/r\" method=\"post\"><button>Restart</button></form><br><form action=\"/c\" method=\"post\"><button>Factory Reset</button></form>";
 const char HTTP_ITEM[] PROGMEM            = "<div><a href='#p' onclick='c(this)'>{v}</a>&nbsp;<span class='q {i}'>{r}%</span></div>";
