@@ -211,10 +211,11 @@ void loop() {
 
 String loadDataFromURL() {
   if (WiFi.status() == WL_CONNECTED) {
+    WiFiClient client;
     HTTPClient http;
     http.setTimeout(3000);
     Serial.println("getState url: " + String(url));
-    http.begin(url);
+    http.begin(client, url);
     int httpCode = http.GET();
     String payload = "error";
     if (httpCode > 0) {
@@ -236,4 +237,3 @@ String loadDataFromURL() {
     return payload;
   } else ESP.restart();
 }
-
