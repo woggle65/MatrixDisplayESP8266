@@ -1,5 +1,18 @@
 # MatrixDisplayESP8266
 
+**Änderungen zum Original:**
+
+[ESP8266 zur Arduino-IDE hinzufügen](https://randomnerdtutorials.com/how-to-install-esp8266-board-arduino-ide/)
+
+Folgende Libraries installieren:
+- MD_MAX72xx
+- MD_Parola
+- ArduinoJson
+
+**Weiter mit dem Original**
+
+-----
+
 ![Sample1](/images/Sample1.png)
 
 
