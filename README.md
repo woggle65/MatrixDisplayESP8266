@@ -8,6 +8,9 @@ Folgende Libraries installieren:
 - MD_MAX72xx
 - MD_Parola
 - ArduinoJson
+- WiFiManager by tzapu (Arduino 2.0) bzw. by tablatronix (Arduino 1.8.x)
+
+Bearbeitet und getestet habe ich das Projekt mit der Arduino IDE 2.0.0-rc7.
 
 **Weiter mit dem Original**
 
