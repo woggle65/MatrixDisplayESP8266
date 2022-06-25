@@ -6,7 +6,7 @@
 #include <ESP8266HTTPClient.h>
 #include <ArduinoJson.h>
 #include <FS.h>
-#include "WM.h"
+#include <WiFiManager.h>
 #include <ArduinoOTA.h>
 
 char refreshSeconds[10] = "60";
