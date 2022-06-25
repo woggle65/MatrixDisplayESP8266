@@ -23,7 +23,8 @@ bool loadSysConfig() {
   }
   JsonObject json = doc.as<JsonObject>();
 
-  serializeJson(doc, Serial);
+  serializeJson(doc, Serial); Serial.println();
+  
   ((json["ip"]).as<String>()).toCharArray(ip, IPSIZE);
   ((json["netmask"]).as<String>()).toCharArray(netmask, IPSIZE);
   ((json["gw"]).as<String>()).toCharArray(gw, IPSIZE);
