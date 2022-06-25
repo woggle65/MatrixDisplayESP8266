@@ -64,6 +64,7 @@ const int NTP_PACKET_SIZE = 48;
 byte packetBuffer[ NTP_PACKET_SIZE];
 unsigned int localNTPport = 2390;
 const char* ntpServerName = "ptbtime2.ptb.de";
+//const char* ntpServerName = "de.pool.ntp.org";
 WiFiUDP NTPudp;
 
 int localCNTRLport = 6610;
@@ -79,6 +80,9 @@ void setup() {
   Serial.begin(115200);
   pinMode(key1, INPUT_PULLUP);
   pinMode(key2, INPUT_PULLUP);
+
+  Serial.println("-----------------------------------------------------------");
+
   P.begin();
   P.setIntensity(intensity);
   P.displayClear();
@@ -118,12 +122,16 @@ void setup() {
       delay(1500);
       timeSetTryCount++;
       if (timeSetTryCount > 4) {
+        Serial.println("NTP fail");
         P.displayText("NTP FAILURE", PA_LEFT, 25, 10, PA_PRINT, PA_PRINT);
         P.displayAnimate();
         delay(2000);
         ESP.restart();
       }
     }
+    Serial.print("NTP time was set (UTC): ");
+    digitalClockDisplay();
+
     P.displayText(curMessage, scrollAlign, String(scrollSpeed).toInt(), String(scrollPause).toInt() * 1000, scrollEffectIn, scrollEffectOut);
     startOTAhandling();
   }
