@@ -16,6 +16,7 @@ bool doWifiConnect() {
     if (String(ip) != "0.0.0.0")
       WiFi.config(IPAddress(ipBytes[0], ipBytes[1], ipBytes[2], ipBytes[3]), IPAddress(gwBytes[0], gwBytes[1], gwBytes[2], gwBytes[3]), IPAddress(netmaskBytes[0], netmaskBytes[1], netmaskBytes[2], netmaskBytes[3]));
 
+    Serial.print("Waiting");
     while (WiFi.status() != WL_CONNECTED) {
       waitCounter++;
       Serial.print(".");
@@ -25,6 +26,8 @@ bool doWifiConnect() {
       delay(500);
     }
     Serial.println("Wifi Connected");
+    IPAddress ip = WiFi.localIP();
+    Serial.print("IP: "); Serial.println(ip);
     return true;
   } else {
     WiFiManager wifiManager;
@@ -97,7 +100,6 @@ bool doWifiConnect() {
     }
     return true;
   }
-
 }
 
 void configModeCallback (WiFiManager *myWiFiManager) {
