@@ -230,8 +230,8 @@ String loadDataFromURL() {
       payload = http.getString();
     }
     if (httpCode != 200) {
-      Serial.println("HTTP " + String(url) + " fail");
-      payload = " HTTP ERROR ";
+      Serial.println("HTTP " + String(url) + " fail: " + String(httpCode));
+      payload = " HTTP ERROR " + String(httpCode) + " ";
     }
     http.end();
 
