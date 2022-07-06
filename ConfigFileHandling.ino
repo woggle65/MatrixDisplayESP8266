@@ -1,4 +1,5 @@
-bool loadSysConfig() {
+bool loadSysConfig()
+{
   File configFile = SPIFFS.open("/" + configFilename, "r");
   if (!configFile) {
     Serial.println("Failed to open config file");
@@ -42,7 +43,8 @@ bool loadSysConfig() {
   return true;
 }
 
-bool saveSysConfig() {
+bool saveSysConfig()
+{
   StaticJsonDocument<1024> doc;
   JsonObject json = doc.to<JsonObject>();
 

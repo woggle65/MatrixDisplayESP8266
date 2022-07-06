@@ -76,11 +76,13 @@ WiFiUDP CNTRLudp;
 bool key1last = false;
 bool key2last = false;
 
-void setup() {
+void setup()
+{
   Serial.begin(115200);
   pinMode(key1, INPUT_PULLUP);
   pinMode(key2, INPUT_PULLUP);
 
+  // Separating line to indicate start
   Serial.println("-----------------------------------------------------------");
 
   P.begin();
@@ -129,17 +131,19 @@ void setup() {
         ESP.restart();
       }
     }
-    Serial.print("NTP time was set (UTC): ");
-    digitalClockDisplay();
+    Serial.print("NTP time was set (UTC): "); digitalClockDisplay();
 
     P.displayText(curMessage, scrollAlign, String(scrollSpeed).toInt(), String(scrollPause).toInt() * 1000, scrollEffectIn, scrollEffectOut);
+
     startOTAhandling();
   }
   else ESP.restart();
 }
 
-void loop() {
+void loop()
+{
   ArduinoOTA.handle();
+  
   if (digitalRead(key1) == LOW ) {
     if (!key1last) {
       key1last = true;
@@ -217,7 +221,8 @@ void loop() {
   }
 }
 
-String loadDataFromURL() {
+String loadDataFromURL()
+{
   if (WiFi.status() == WL_CONNECTED) {
     WiFiClient client;
     HTTPClient http;

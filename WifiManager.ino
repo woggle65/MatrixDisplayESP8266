@@ -1,4 +1,5 @@
-bool doWifiConnect() {
+bool doWifiConnect()
+{
   String _ssid = WiFi.SSID();
   String _psk = WiFi.psk();
 
@@ -43,6 +44,7 @@ bool doWifiConnect() {
     WiFiManagerParameter custom_netmask("custom_netmask", "Netzmaske", "", 15);
     WiFiManagerParameter custom_gw("custom_gw", "Gateway", "", 15);
     WiFiManagerParameter custom_text("<br/><br>Statische IP (wenn leer, dann DHCP):");
+    
     wifiManager.addParameter(&custom_url);
     wifiManager.addParameter(&custom_refreshSeconds);
     wifiManager.addParameter(&custom_scrollPause);
@@ -77,6 +79,7 @@ bool doWifiConnect() {
 
     Serial.println("Wifi Connected");
     Serial.println("CUSTOM STATIC IP: " + String(ip) + " Netmask: " + String(netmask) + " GW: " + String(gw));
+
     if (shouldSaveConfig) {
       if (String(custom_ip.getValue()).length() > 5) {
         Serial.println("Custom IP Address is set!");
@@ -102,16 +105,19 @@ bool doWifiConnect() {
   }
 }
 
-void configModeCallback (WiFiManager *myWiFiManager) {
+void configModeCallback (WiFiManager *myWiFiManager)
+{
   Serial.println("AP-Mode active!");
 }
 
-void saveConfigCallback () {
+void saveConfigCallback ()
+{
   Serial.println("Should save config");
   shouldSaveConfig = true;
 }
 
-void parseBytes(const char* str, char sep, byte* bytes, int maxBytes, int base) {
+void parseBytes(const char* str, char sep, byte* bytes, int maxBytes, int base)
+{
   for (int i = 0; i < maxBytes; i++) {
     bytes[i] = strtoul(str, NULL, base);  // Convert byte
     str = strchr(str, sep);               // Find next separator

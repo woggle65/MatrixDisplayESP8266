@@ -1,4 +1,5 @@
-time_t getNtpTime() {
+time_t getNtpTime()
+{
   IPAddress ntpServerIP;
   while (NTPudp.parsePacket() > 0) ;
   WiFi.hostByName(ntpServerName, ntpServerIP);
@@ -19,7 +20,8 @@ time_t getNtpTime() {
   return 0;
 }
 
-void sendNTPpacket(IPAddress& address) {
+void sendNTPpacket(IPAddress& address)
+{
   memset(packetBuffer, 0, NTP_PACKET_SIZE);
   packetBuffer[0] = 0b11100011;
   packetBuffer[1] = 0;
@@ -34,14 +36,16 @@ void sendNTPpacket(IPAddress& address) {
   NTPudp.endPacket();
 }
 
-String calcTime(time_t t) {
+String calcTime(time_t t)
+{
   byte Stunde = hour(t) + 1;
   Stunde = (summertime(t, 0)) ? Stunde + 1 : Stunde;
   if (Stunde > 23) Stunde = Stunde - 24;
   return String((Stunde < 10) ? "0" : "" ) + String(Stunde) +  ":" + String((minute(t) < 10) ? "0" : "" )  + String(minute(t)) + " Uhr";
 }
 
-boolean summertime(time_t t, byte tzHours) {
+boolean summertime(time_t t, byte tzHours)
+{
   if (month(t) < 3 || month(t) > 10) return false; // keine Sommerzeit in Jan, Feb, Nov, Dez
   if (month(t) > 3 && month(t) < 10) return true; // Sommerzeit in Apr, Mai, Jun, Jul, Aug, Sep
   if (month(t) == 3 && (hour(t) + 24 * day(t)) >= (1 + tzHours + 24 * (31 - (5 * year(t) / 4 + 4) % 7)) || month(t) == 10 && (hour(t) + 24 * day(t)) < (1 + tzHours + 24 * (31 - (5 * year(t) / 4 + 1) % 7)))
@@ -50,7 +54,9 @@ boolean summertime(time_t t, byte tzHours) {
     return false;
 }
 
-void digitalClockDisplay(){
+// Print raw time (UTC) on serial
+void digitalClockDisplay()
+{
   // digital clock display of the time
   Serial.print(hour());
   printDigits(minute());
@@ -64,7 +70,8 @@ void digitalClockDisplay(){
   Serial.println(); 
 }
 
-void printDigits(int digits){
+void printDigits(int digits)
+{
   // utility for digital clock display: prints preceding colon and leading 0
   Serial.print(":");
   if(digits < 10)
