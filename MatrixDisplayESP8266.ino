@@ -42,7 +42,7 @@ uint8_t heart[] = {5, 28, 62, 124, 62, 28};
 
 char curMessage[75];
 
-int loopCount = 0;
+int loopCount = -1;
 int cnt = 0;
 long lastMillis = 0;
 String valueArray[20];
