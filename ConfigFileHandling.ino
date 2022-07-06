@@ -34,11 +34,33 @@ bool loadSysConfig()
   ((json["scrollPause"]).as<String>()).toCharArray(scrollPause, 10);
   ((json["scrollSpeed"]).as<String>()).toCharArray(scrollSpeed, 10);
   ((json["url"]).as<String>()).toCharArray(url, 255);
+  ((json["ccuip"]).as<String>()).toCharArray(ccuip, IPSIZE);
+  ((json["sysvar"]).as<String>()).toCharArray(sysvar, 255);
 
   intensity = json["intensity"];
 
-  Serial.print("Loaded intensity: ");
-  Serial.println(String(intensity));
+  if (String(ccuip) == "null")
+  {
+    ccuip[0] = 0;
+  }
+
+  if (String(sysvar) == "null")
+  {
+    sysvar[0] = 0;
+  }
+
+  Serial.println("IP: " + String(ip));
+  Serial.println("NetMask: " + String(netmask));
+  Serial.println("Gateway: " + String(gw));
+
+  Serial.println("Refresh: " + String(refreshSeconds));
+  Serial.println("ScrollPause: " + String(scrollPause));
+  Serial.println("ScrollSpeed: " + String(scrollSpeed));
+  Serial.println("URL: " + String(url));
+  Serial.println("CCU IP: " + String(ccuip));
+  Serial.println("SysVar: " + String(sysvar));
+
+  Serial.print("Loaded intensity: "); Serial.println(String(intensity));
 
   return true;
 }
@@ -53,8 +75,10 @@ bool saveSysConfig()
   json["gw"] = gw;
   json["refreshSeconds"] = refreshSeconds;
   json["scrollPause"] = scrollPause;
-  json["url"] = url;
   json["scrollSpeed"] = scrollSpeed;
+  json["url"] = url;
+  json["ccuip"] = ccuip;
+  json["sysvar"] = sysvar;
   json["intensity"] = intensity;
 
   File configFile = SPIFFS.open("/" + configFilename, "w");
@@ -62,8 +86,10 @@ bool saveSysConfig()
     Serial.println("Failed to open config file for writing");
     return false;
   }
-  serializeJson(doc, Serial);
+
   serializeJson(doc, configFile);
-  Serial.println();
+
+  serializeJson(doc, Serial); Serial.println();
+  
   return true;
 }

@@ -38,6 +38,8 @@ bool doWifiConnect()
     WiFiManagerParameter custom_refreshSeconds("refreshSeconds", "URL alle xx Sekunden neu laden", refreshSeconds, 10);
     WiFiManagerParameter custom_scrollPause("scrollPause", "Anzeigedauer je Zeile in Sekunden", scrollPause, 10);
     WiFiManagerParameter custom_url("url", "Datenbezug URL", url, 255);
+    WiFiManagerParameter custom_ccuip("ccuip", "IP der CCU", ccuip, 15);
+    WiFiManagerParameter custom_sysvar("sysvar", "SysVar auf der CCU", sysvar, 255);
     WiFiManagerParameter custom_scrollSpeed("scrollSpeed", "Animationsgeschwindigkeit", scrollSpeed, 10);
 
     WiFiManagerParameter custom_ip("custom_ip", "IP-Adresse", "", 15);
@@ -46,6 +48,8 @@ bool doWifiConnect()
     WiFiManagerParameter custom_text("<br/><br>Statische IP (wenn leer, dann DHCP):");
     
     wifiManager.addParameter(&custom_url);
+    wifiManager.addParameter(&custom_ccuip);
+    wifiManager.addParameter(&custom_sysvar);
     wifiManager.addParameter(&custom_refreshSeconds);
     wifiManager.addParameter(&custom_scrollPause);
     wifiManager.addParameter(&custom_scrollSpeed);
@@ -79,7 +83,6 @@ bool doWifiConnect()
 
     Serial.println("Wifi Connected");
     Serial.println("CUSTOM STATIC IP: " + String(ip) + " Netmask: " + String(netmask) + " GW: " + String(gw));
-
     if (shouldSaveConfig) {
       if (String(custom_ip.getValue()).length() > 5) {
         Serial.println("Custom IP Address is set!");
@@ -94,6 +97,8 @@ bool doWifiConnect()
       strcpy(refreshSeconds, custom_refreshSeconds.getValue());
       strcpy(scrollPause, custom_scrollPause.getValue());
       strcpy(url, custom_url.getValue());
+      strcpy(ccuip, custom_ccuip.getValue());
+      strcpy(sysvar, custom_sysvar.getValue());
       strcpy(scrollSpeed, custom_scrollSpeed.getValue());
 
       saveSysConfig();

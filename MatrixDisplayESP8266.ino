@@ -12,6 +12,8 @@
 char refreshSeconds[10] = "60";
 char scrollPause[10] = "5";
 char url[255] = "";
+char ccuip[15] = "0.0.0.0";
+char sysvar[255] = "";
 char scrollSpeed[10] = "25";
 
 textEffect_t scrollEffectIn  = PA_SCROLL_LEFT;
@@ -29,6 +31,7 @@ String configFilename     = "sysconf.json";
 */
 #define HARDWARE_TYPE MD_MAX72XX::FC16_HW
 #define MAX_DEVICES   8
+//#define MAX_DEVICES   12
 #define CLK_PIN       D5
 #define DATA_PIN      D7
 #define CS_PIN        D8
@@ -134,6 +137,14 @@ void setup()
     Serial.print("NTP time was set (UTC): "); digitalClockDisplay();
 
     P.displayText(curMessage, scrollAlign, String(scrollSpeed).toInt(), String(scrollPause).toInt() * 1000, scrollEffectIn, scrollEffectOut);
+
+    if (String(url) == "")
+    {
+      String ccu_url = "http://" + String(ccuip) + ":8181/hm.exe?ret=dom.GetObject(ID_SYSTEM_VARIABLES).Get('" + String(sysvar) + "').State()";
+      ccu_url.toCharArray(url, 255);
+
+      Serial.print("Generated URL: "); Serial.println(ccu_url);
+    }
 
     startOTAhandling();
   }
