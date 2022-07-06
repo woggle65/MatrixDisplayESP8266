@@ -12,6 +12,18 @@ Folgende Libraries installieren:
 
 Bearbeitet und getestet habe ich das Projekt mit der Arduino IDE 2.0.0-rc7.
 
+Da wohl viele das Display im Zusammenspiel mit der Homematic-CCU einsetzen, habe ich zwei neue Felder eingebaut:
+CCU-IP und SysVar.
+
+Hier kann man, wie die Bezeichner schon vermuten lassen, die IP-Adresse der CCU und den Namen der Systemvariablen aus der gelesen werden soll eingeben.
+Aus diesen beiden Angebane wird die passende Abfrage-URL zusammengebaut.
+
+Finde ich deutlich einfacher als die ewig lange URL einzugeben. Obwohl man das ja eigentlich nur einmal machen muss.
+
+Damit man sich die Möglichkeit mit der URL nicht verbaut, werden CCU-IP und SysVar nur genutzt wenn das URL-Feld leer ist!
+
+Also entweder in das Feld URL eine URL eintragen. Oder das Feld URL leer lassen und dafür CCU-IP und SysVar eintrage,
+
 **Weiter mit dem Original**
 
 -----
