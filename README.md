@@ -22,7 +22,7 @@ Finde ich deutlich einfacher als die ewig lange URL einzugeben. Obwohl man das j
 
 Damit man sich die Möglichkeit mit der URL nicht verbaut, werden CCU-IP und SysVar nur genutzt wenn das URL-Feld leer ist!
 
-Also entweder in das Feld URL eine URL eintragen. Oder das Feld URL leer lassen und dafür CCU-IP und SysVar eintrage,
+Also entweder in das Feld URL eine URL eintragen. Oder das Feld URL leer lassen und dafür CCU-IP und SysVar eintragen.
 
 **Weiter mit dem Original**
 
