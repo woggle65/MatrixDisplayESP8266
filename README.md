@@ -16,7 +16,7 @@ Da wohl viele das Display im Zusammenspiel mit der Homematic-CCU einsetzen, habe
 CCU-IP und SysVar.
 
 Hier kann man, wie die Bezeichner schon vermuten lassen, die IP-Adresse der CCU und den Namen der Systemvariablen aus der gelesen werden soll eingeben.
-Aus diesen beiden Angebane wird die passende Abfrage-URL zusammengebaut.
+Aus diesen beiden Angaben wird die passende Abfrage-URL zusammengebaut.
 
 Finde ich deutlich einfacher als die ewig lange URL einzugeben. Obwohl man das ja eigentlich nur einmal machen muss.
 
