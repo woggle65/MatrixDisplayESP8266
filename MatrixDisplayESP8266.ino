@@ -206,7 +206,7 @@ void loop()
     if (P.displayAnimate())
     {
       loopCount++;
-      if (loopCount > valueCount || valueCount == 0) {
+      if (loopCount >= valueCount || valueCount == 0) {
         String Zeit = calcTime(now());
         Zeit.toCharArray(curMessage, 10);
         loopCount = -1;
