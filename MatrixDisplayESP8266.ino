@@ -39,10 +39,10 @@ String configFilename     = "sysconf.json";
 MD_Parola P = MD_Parola(HARDWARE_TYPE, DATA_PIN, CLK_PIN, CS_PIN, MAX_DEVICES);
 //MD_Parola P = MD_Parola(CS_PIN, MAX_DEVICES);
 
-uint8_t degC[] = {5, 6 , 15 , 9 , 15 , 6 };
-uint8_t line[] = {4,  0, 8, 8, 8 };
-uint8_t plus[] = {5, 8, 8, 62, 8, 8};
-uint8_t block[] =  {3, 255, 255, 255};
+uint8_t degC[]  = {5, 6, 15, 9, 15, 6};
+uint8_t line[]  = {4, 0, 8, 8, 8};
+uint8_t plus[]  = {5, 8, 8, 62, 8, 8};
+uint8_t block[] = {3, 255, 255, 255};
 uint8_t heart[] = {5, 28, 62, 124, 62, 28};
 
 #define MAX_MSGS       20
