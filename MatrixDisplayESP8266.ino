@@ -11,10 +11,11 @@
 
 char refreshSeconds[10] = "60";
 char scrollPause[10] = "5";
+char scrollSpeed[10] = "25";
+
 char url[255] = "";
 char ccuip[15] = "0.0.0.0";
 char sysvar[255] = "";
-char scrollSpeed[10] = "25";
 
 textEffect_t scrollEffectIn  = PA_SCROLL_LEFT;
 textEffect_t scrollEffectOut = PA_SCROLL_UP;
@@ -22,7 +23,7 @@ textPosition_t scrollAlign   = PA_CENTER;
 
 String configFilename     = "sysconf.json";
 
-//fixe Display
+// Display
 /*  HARDWARE_TYPE:
     PAROLA_HW,    ///< Use the Parola style hardware modules.
     GENERIC_HW,   ///< Use 'generic' style hardware modules commonly available.
@@ -37,6 +38,7 @@ String configFilename     = "sysconf.json";
 #define CS_PIN        D8
 MD_Parola P = MD_Parola(HARDWARE_TYPE, DATA_PIN, CLK_PIN, CS_PIN, MAX_DEVICES);
 //MD_Parola P = MD_Parola(CS_PIN, MAX_DEVICES);
+
 uint8_t degC[] = {5, 6 , 15 , 9 , 15 , 6 };
 uint8_t line[] = {4,  0, 8, 8, 8 };
 uint8_t plus[] = {5, 8, 8, 62, 8, 8};
@@ -54,7 +56,7 @@ int intensity = 0;
 int modeCnt = 0;
 byte timeSetTryCount = 0;
 
-//WifiManager - don't touch
+// WifiManager - don't touch
 #define IPSIZE              16
 bool shouldSaveConfig        = false;
 bool wifiManagerDebugOutput  = true;
@@ -114,7 +116,7 @@ void setup()
     }
   }
 
-  //Nachdem die Config geladen wurde...
+  // Nachdem die Config geladen wurde...
   P.setIntensity(intensity);
 
   if (doWifiConnect() == true) {
