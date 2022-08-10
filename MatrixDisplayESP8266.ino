@@ -200,7 +200,7 @@ void loop()
     char *p = buf;
     char *str;
     valueCount = 0;
-    while ((str = strtok_r(p, ";", &p)) != NULL) {
+    while (((str = strtok_r(p, ";", &p)) != NULL) && (valueCount < MAX_MSGS)) {
       valueArray[valueCount] = str;
       valueCount++;
     }
