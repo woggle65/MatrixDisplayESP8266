@@ -45,12 +45,15 @@ uint8_t plus[] = {5, 8, 8, 62, 8, 8};
 uint8_t block[] =  {3, 255, 255, 255};
 uint8_t heart[] = {5, 28, 62, 124, 62, 28};
 
-char curMessage[75];
+#define MAX_MSGS       20
+#define MAX_MSG_LEN    75
+
+char curMessage[MAX_MSG_LEN];
 
 int loopCount = -1;
 int cnt = 0;
 long lastMillis = 0;
-String valueArray[20];
+String valueArray[MAX_MSGS];
 int valueCount = 0;
 int intensity = 0;
 int modeCnt = 0;
