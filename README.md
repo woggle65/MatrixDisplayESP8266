@@ -10,7 +10,7 @@ Folgende Libraries installieren:
 - ArduinoJson
 - WiFiManager by tzapu (Arduino 2.0) bzw. by tablatronix (Arduino 1.8.x)
 
-Bearbeitet und getestet habe ich das Projekt mit der Arduino IDE 2.0.0-rc7.
+Bearbeitet und getestet habe ich das Projekt mit der Arduino IDE 2.1.0.
 
 Da wohl viele das Display im Zusammenspiel mit der Homematic-CCU einsetzen, habe ich zwei neue Felder eingebaut:
 CCU-IP und SysVar.
