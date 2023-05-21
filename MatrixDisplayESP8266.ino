@@ -264,5 +264,8 @@ String loadDataFromURL()
     }
     Serial.println("getState payload = " + payload);
     return payload;
-  } else ESP.restart();
+  } else {
+    ESP.restart();
+    return "";
+  }
 }
